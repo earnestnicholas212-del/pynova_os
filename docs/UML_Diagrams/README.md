@@ -1,1 +1,1 @@
-# UML Diagrams\n\nPlace PlantUML or draw.io diagrams here.\n
+# UML Diagrams
