@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        env:
+          PYTHONPATH: src
+        run: python -m unittest discover -s tests -v
+
+      - name: Run benchmark
+        env:
+          PYTHONPATH: src
+        run: python benchmark.py
+
+      - name: Run CLI simulation
+        env:
+          PYTHONPATH: src
+        run: |
+          python cli.py sim --algo SJF --ticks 50 --processes 5,1,128 3,2,64
+          python cli.py sim --config examples/batch_simulation.json --export-csv /tmp/out.csv --export-json /tmp/out.json

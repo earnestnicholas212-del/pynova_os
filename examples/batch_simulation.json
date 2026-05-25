@@ -1,0 +1,16 @@
+{
+  "algorithm": "Round Robin",
+  "quantum": 3,
+  "ticks": 150,
+  "report_interval": 15,
+  "delay_ms": 0,
+  "memory_total": 2048,
+  "disk_size": 8192,
+  "processes": [
+    {"name": "WebServer", "burst": 12, "priority": 5, "memory": 256},
+    {"name": "DBQuery",   "burst": 8,  "priority": 8, "memory": 512},
+    {"name": "Logger",    "burst": 4,  "priority": 2, "memory": 128},
+    {"name": "CacheMgr",  "burst": 6,  "priority": 6, "memory": 256},
+    {"name": "Backup",    "burst": 20, "priority": 1, "memory": 1024}
+  ]
+}

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pynovaos"
+version = "1.0.0"
+description = "Pure Python educational OS simulator with DES engine, scheduling algorithms, and real-time GUI"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "PyNova Team"}
+]
+keywords = ["os", "simulator", "scheduler", " DES", "education"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: System :: Operating System",
+]
+dependencies = [
+    "matplotlib>=3.0.0",
+]
+
+[project.scripts]
+pynovaos = "main:main"
+pynovaos-cli = "cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
